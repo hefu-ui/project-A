@@ -1,3 +1,5 @@
+
+
 $(function () {
     // 点击去注册的界面
     $('#link_reg').on('click', function () {
@@ -43,7 +45,6 @@ $(function () {
     $('#form_login').on('submit', function (e) {
         e.preventDefault()
         $.ajax({
-
             url: '/api/login',
             method: "POST",
             data: $(this).serialize(),
