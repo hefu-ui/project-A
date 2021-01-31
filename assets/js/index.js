@@ -6,11 +6,9 @@ $(function () {
             localStorage.removeItem('token')
             location.href = '/login.html'
             layer.close(index)
-
         })
     })
 })
-
 function getUserInfo() {
     $.ajax({
         method: 'GET',
@@ -26,26 +24,13 @@ function getUserInfo() {
                 return layui.layer.msg('获取用户信息失败！')
             }
             renderAvater(res.data)
-        },
-        // complete: function (res) {
-        //     console.log(res);
-        //     if (res.responseJSON.status === 1 && res.responseJSON.message === '身份认证失败！') {
-        //         // console.log('yes');
-        //         localStorage.removeItem('token')
-        //         location.href = '/login.html'
-        //     }
-
-
-
-        // }
-
+        }
     })
 }
-
-
 function renderAvater(user) {
     var name = user.nickname || user.username
-    $('.welcome').html('欢迎' + name)
+    // 2. 设置欢迎的文本
+    $('.welcome').html('欢迎&nbsp;&nbsp;' + name)
     if (user.user_pic !== null) {
         $('.layui-nav-img').attr('src', user.user_pic).show()
         $('.text-Avatar').hide()
@@ -53,6 +38,6 @@ function renderAvater(user) {
     else {
         $('.layui-nav-img').hide()
         var first = name[0].toUpperCase()
-        $('.text-Avatar').html(first).show()
+        $('.text-avatar').html(first).show()
     }
 }
